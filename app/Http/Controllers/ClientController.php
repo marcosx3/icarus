@@ -17,6 +17,7 @@ class ClientController extends Controller
     {
         return view('client.create');
     }
+
     public function createClient(CreateUpdateClienteFormRequest $request)
     {
         $data = $request->except('_token');
@@ -25,26 +26,42 @@ class ClientController extends Controller
         $client->email = $data['email'];
         $client->phone_1 = $data['phone_1'];
         $client->phone_2 = $data['phone_2'];
-       if( $client->save())
-       {
-        return redirect()->route("client.list", compact('clients'))->with("success", "Cliente cadastrado com sucesso!");
-       }
-       return redirect()->route("client.list", compact('clients'))->with("error", "Cliente não cadastrado.");
+
+        if ($client->save()) {
+            return redirect()->route("client.list", compact('clients'))->with("success", "Cliente cadastrado com sucesso!");
+        }
+        return redirect()->route("client.list", compact('clients'))->with("error", "Cliente não cadastrado.");
     }
+
     public function listClientView()
-    {   
+    {
         $clients = Client::all();
-        return view('client.list',compact('clients'));
+        return view('client.list', compact('clients'));
     }
+
     public function editClientView($id)
     {
         $client = Client::find($id);
-        return view('client.update',compact('client'));
+        return view('client.update', compact('client'));
     }
-    public function editClient()
+
+    public function editClient(CreateUpdateClienteFormRequest $request, $id)
     {
+        $data = $request->except('_token');
+        $client = Client::find($id);
+        $client->name = $data['name'];
+        $client->email = $data['email'];
+        $client->phone_1 = $data['phone_1'];
+        $client->phone_2 = $data['phone_2'];
+        $client->update();
+        return redirect()->route('client.list');
     }
-    public function destroyClient()
+
+
+    public function destroyClient($id)
     {
+        $client = Client::find($id);
+        $client->delete();
+        return redirect()->route('client.list');
     }
 }

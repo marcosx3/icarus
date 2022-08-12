@@ -15,18 +15,21 @@
             </thead>
             <tbody>
                 @foreach ($clients as $client)
-                <tr>
+                    <tr>
                         <td>{{ $client->name }} </td>
                         <td>{{ $client->email }} </td>
                         <td>{{ $client->phone_1 }} </td>
-                        <td>{{ $client->phone_2 == null ? 'N/A' : $client->phone_2}}</td>
+                        <td>{{ $client->phone_2 == null ? 'N/A' : $client->phone_2 }}</td>
                         <td>
                             <a href="{{ route('client.edit', $client->id) }}" class="btn btn-warning ">Atualizar</a>
                         </td>
-                        {{-- <td>
-                            <a href="{{ route('client.deletar', $p->id) }}" class="btn btn-danger ">Excluir</a>
-                        </td> --}}
-                </tr>
+                        <td>
+                            <form action="{{ route('client.delete', $client->id) }}" method="get">
+                                <button class="btn btn-danger d-inline-block"><a
+                                        style="text-decoration: none;">Excluir</a></button>
+                            </form>
+                        </td>
+                    </tr>
                 @endforeach
             </tbody>
         </table>
