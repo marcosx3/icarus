@@ -18,5 +18,13 @@ class Client extends Model
         'phone_2',
     ];
 
-  
+    public function expense()
+    {
+        return $this->hasMany(Expense::class);
+    }
+
+    public function revenues()
+    {
+        return $this->hasMany(Revenue::class);
+    }
 }
