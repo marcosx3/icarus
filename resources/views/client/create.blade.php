@@ -2,7 +2,7 @@
 @section('title', 'Cadastro de clientes')
 @section('body')
     <section class="d-flex justify-content-center mt-4 align-content-end">
-        <form action="" method="post" class="form w-75 mt-4" >
+        <form action="{{route('client.create')}}" method="post" class="form w-75 mt-4" >
             @csrf
             <div class="mb-3">
                 <label for="name" class="form-label">Nome </label>

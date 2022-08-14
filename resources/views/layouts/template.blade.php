@@ -17,7 +17,7 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-              <a class="navbar-brand" href="#">Icarus</a>
+              <a class="navbar-brand" href="/home">Icarus</a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -31,32 +31,47 @@
                       Clientes
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <li><a class="dropdown-item" href="/Clientes/Cadastro">Cadastrar Cliente</a></li>
+                      <li><a class="dropdown-item" href="/clientes/cadastro">Cadastrar Clientes</a></li>
                       <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="/Clientes/Lista">Listar Cliente</a></li>
+                      <li><a class="dropdown-item" href="/clientes/lista">Listar Clientes</a></li>
                     
                     </ul>
                   </li>
 
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Finanças
+                      Receita
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <li><a class="dropdown-item" href="#">Cadastrar Receita</a></li>
+                      <li><a class="dropdown-item" href="/receita/cadastro">Cadastrar Receitas</a></li>
                       <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="#">Cadastrar Despesa</a></li>
-                     
+                      <li><a class="dropdown-item" href="/despesa/tipo/cadastro">Cadastrar Tipo de Receitas</a></li>
                     </ul>
                   </li>
+
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Despesas
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <li><a class="dropdown-item" href="/despesa/cadastro">Cadastrar Despesas</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="/despesa/tipo/cadastro">Cadastrar Tipo de Despesas</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="/despesa/tipo/lista">Listar Tipos de Despesas</a></li>
+                    </ul>
+                  </li>
+
+
+
                   <li class="nav-item">
                     <a class="nav-link" href="#">Relatórios</a>
                   </li>
                 </ul>
-                <form class="d-flex">
+                {{-- <form class="d-flex">
                   <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                   <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
+                </form> --}}
               </div>
             </div>
           </nav>

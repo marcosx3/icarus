@@ -3,14 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateUpdateClienteFormRequest;
-use App\Models\Client;
-use Illuminate\Http\Request;
+use App\Interfaces\ClientInterface;
+use App\Repositories\ClientRepository;
 
 class ClientController extends Controller
 {
-    public function __construct(Client $client)
+    private ClientRepository $clientRepository;
+
+    public function __construct(ClientInterface $clientRepository)
     {
-        $this->client = $client;
+        $this->clientRepository = $clientRepository;
+    }
+
+    private function listAllClients()
+    {
+        $clients = $this->clientRepository->all();
+        return view('client.list', compact('clients'));
     }
 
     public function createClientView()
@@ -21,47 +29,32 @@ class ClientController extends Controller
     public function createClient(CreateUpdateClienteFormRequest $request)
     {
         $data = $request->except('_token');
-        $client = new Client();
-        $client->name = $data['name'];
-        $client->email = $data['email'];
-        $client->phone_1 = $data['phone_1'];
-        $client->phone_2 = $data['phone_2'];
+        $this->clientRepository->create($data);
 
-        if ($client->save()) {
-            return redirect()->route("client.list", compact('clients'))->with("success", "Cliente cadastrado com sucesso!");
-        }
-        return redirect()->route("client.list", compact('clients'))->with("error", "Cliente não cadastrado.");
+        return $this->listAllClients();
     }
 
     public function listClientView()
     {
-        $clients = Client::all();
-        return view('client.list', compact('clients'));
+        return $this->listAllClients();
     }
 
     public function editClientView($id)
     {
-        $client = Client::find($id);
+        $client = $this->clientRepository->edit($id);
         return view('client.update', compact('client'));
     }
 
     public function editClient(CreateUpdateClienteFormRequest $request, $id)
     {
         $data = $request->except('_token');
-        $client = Client::find($id);
-        $client->name = $data['name'];
-        $client->email = $data['email'];
-        $client->phone_1 = $data['phone_1'];
-        $client->phone_2 = $data['phone_2'];
-        $client->update();
-        return redirect()->route('client.list');
+        $this->clientRepository->update($data, $id);
+        return $this->listAllClients();
     }
-
-
     public function destroyClient($id)
     {
-        $client = Client::find($id);
-        $client->delete();
-        return redirect()->route('client.list');
+        $this->clientRepository->delete($id);
+        $this->listAllClients();
+        return $this->listAllClients();
     }
 }

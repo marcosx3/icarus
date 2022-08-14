@@ -15,9 +15,17 @@ return new class extends Migration
     {
         Schema::create('expenses', function (Blueprint $table) {
             $table->id();
-            $table->float('expense');
-            $table->text('source');
-            $table->date('date');
+            $table->foreignId('client_id')
+            ->constrained('clients')
+            ->onUpdate('CASCADE')
+            ->onDelete('CASCADE');
+            $table->foreignId('type_expense_id')
+            ->constrained('type_expenses')
+            ->onDelete('CASCADE')
+            ->onUpdate('CASCADE');
+            $table->text('expense_name');
+            $table->decimal('expense_value');
+            $table->date('expense_month');
             $table->timestamps();
         });
     }

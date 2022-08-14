@@ -13,4 +13,9 @@ class Expense extends Model
     {
         return $this->belongsTo(Client::class);
     }
+
+    public function typeExpense()
+    {
+        return $this->hasMany(TypeExpense::class);
+    }
 }

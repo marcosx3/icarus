@@ -1,30 +1,24 @@
 @extends('layouts.template')
-@section('title', 'Lista de Clientes')
+@section('title', 'Listagem de Tipo de Despesa')
 @section('body')
     <section class="container-fluid d-flex mt-5">
         <table class="table">
             <thead>
                 <tr>
-                    <th>Cliente </th>
-                    <th>Email </th>
-                    <th>Telefone </th>
-                    <th>Telefone - 2 </th>
+                    <th>Tipo de Despesa </th>
                     <th>Atualizar</th>
                     <th>Excluir</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($clients as $client)
+                @foreach ($type_expenses as $te)
                     <tr>
-                        <td>{{ $client->name }} </td>
-                        <td>{{ $client->email }} </td>
-                        <td>{{ $client->phone_1 }} </td>
-                        <td>{{ $client->phone_2 == null ? 'N/A' : $client->phone_2 }}</td>
+                        <td>{{ $te->type_expense }} </td>
                         <td>
-                            <a href="{{ route('client.edit', $client->id) }}" class="btn btn-warning ">Atualizar</a>
+                            <a href="{{  route('expense.type.edit', $te->id)   }}" class="btn btn-warning ">Atualizar</a>
                         </td>
                         <td>
-                            <form action="{{ route('client.delete', $client->id) }}" method="get">
+                            <form action="{{ route('expense.type.delete', $te->id) }}" method="get">
                                 <button class="btn btn-danger d-inline-block"><a
                                         style="text-decoration: none;">Excluir</a></button>
                             </form>
