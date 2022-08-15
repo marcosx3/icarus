@@ -12,11 +12,11 @@
             @csrf
             <div class="mb-3">
                 <label for="name_expense" class="form-label">Nome</label>
-                <input type="text" class="form-control">
+                <input type="text" name="expense_name" class="form-control">
             </div>
             <div class="mb-3">
-                <label for="expense" class="form-label">Valor</label>
-                <input type="number" class="form-control"  step="0.01">
+                <label for="expense_value" class="form-label">Valor</label>
+                <input type="number" name="expense_value" class="form-control" step="0.01">
             </div>
 
             <div class="mb-3">
@@ -32,26 +32,21 @@
                 <label for="clients" class="form-label">Cliente </label>
                 <select name="clients" class="form-select">
                     @foreach ($clients as $client)
-                        <option value=" {{ $client->id }} "> {{ $client->name }} </option>
+                        <option value="{{ $client->id }}"> {{ $client->name }} </option>
                     @endforeach
                 </select>
             </div>
             <div class="mb-3">
                 <label for="date" class="form-label">Periodo </label>
-                <input type="date" class="form-control">
+                <input type="date" name="expense_month" class="form-control">
             </div>
-{{-- 
             <div class="mb-3">
-                <label for="expense_month_label">Repetir nos próximos meses?</label>
-                <div class="form-check" name="expense_month_label">
-                    <input type="radio" name="expense_month" id="expense_month" value="true">
-                    <label class="form-check-label" for="expense_month">Sim</label>
-                </div>
-                <div class="form-check" name="expense_month_label">
-                    <input type="radio" name="expense_month" id="expense_month" value="false">
-                    <label class="form-check-label" for="expense_month">Não</label>
-                </div>
-            </div> --}}
+                <label for="repeat" class="form-label">Repetir nos proximos meses?</label>
+                <select name="repeat" id="repeat" class="form-select">
+                    <option value="true">SIM</option>
+                    <option value="false">NÃO</option>
+                </select>
+            </div>
 
             <button type="submit" class="btn btn-outline-dark">Cadastrar Despesa</button>
         </form>
