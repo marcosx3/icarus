@@ -11,7 +11,7 @@ class TypeExpenseRepository implements TypeExpenseInterface
     {
         return TypeExpense::all();
     }
-    
+
     public function create(array $data)
     {
         return TypeExpense::create($data);
