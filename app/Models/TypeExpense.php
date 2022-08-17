@@ -15,6 +15,6 @@ class TypeExpense extends Model
 
     public function expense()
     {
-        return $this->hasMany(Expense::class);
+        return $this->hasMany(Expense::class,'tb_type_expense_id');
     }
 }

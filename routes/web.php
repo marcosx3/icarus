@@ -32,10 +32,9 @@ Route::middleware(['auth'])->group(function () {
     // EXPENSE ROUTES
     Route::get('/despesa/cadastro',[ExpenseController::class,'createExpenseView'])->name('expense.create.view');
     Route::get('/despesa/lista',[ExpenseController::class, 'listExpenseView'])->name('expense.list');
-
     Route::get('/despesa/edit/{id}',[ExpenseController::class,'editExpenseView'])->name('expense.edit');
+    Route::get('/despesa/delete/{id}',[ExpenseController::class,'deleteExpense'])->name('expense.delete');
     Route::post('/despesa/update/{id}',[ExpenseController::class,'updateExpenseView'])->name('expense.update');
-    
     Route::post('/despesa/cadastro',[ExpenseController::class,'createExpense'])->name('expense.create');
 
 });

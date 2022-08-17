@@ -23,8 +23,8 @@
                 <label for="type_expense" class="form-label">Tipo de Despesa </label>
                 <select name="type_expense" class="form-select">
 
-                    @foreach ($type_expense as $tExpense)
-                        <option value="{{$expense->tb_type_expense_id->type_expense}}" > {{ $tExpense->type_expense }} </option>
+                    @foreach ($type_expenses as $tExpense)
+                        <option value="{{$tExpense->id}}" > {{ $tExpense->type_expense }} </option>
                     @endforeach
                 </select>
             </div>
@@ -33,7 +33,7 @@
                 <label for="clients" class="form-label">Cliente </label>
                 <select name="clients" class="form-select">
                     @foreach ($clients as $client)
-                        <option value="{{$expense->tb_client_id->name}}"> {{ $client->name }} </option>
+                        <option value="{{$client->id}}"> {{ $client->name }} </option>
                     @endforeach
                 </select>
             </div>

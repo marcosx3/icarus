@@ -18,9 +18,9 @@ class Client extends Model
         'phone_2',
     ];
 
-    public function expense()
+    public function expenses()
     {
-        return $this->hasMany(Expense::class);
+        return $this->hasMany(Expense::class,'tb_client_id');
     }
 
     public function revenues()

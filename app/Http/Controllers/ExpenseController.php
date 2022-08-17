@@ -50,26 +50,25 @@ class ExpenseController extends Controller
     public function listExpenseView()
     {
         $expenses = $this->expenseRepository->all();
-        return view('expense.list',compact('expenses'));
+        return view('expense.list', compact('expenses'));
     }
 
     public function editExpenseView($id)
-    {   
+    {
         $expense = $this->expenseRepository->edit($id);
-        return view('expense.update',compact('expense'));
+        $clients = Client::all();
+        $type_expenses = TypeExpense::all();
+        return view('expense.update', compact('expense', 'clients', 'type_expenses'));
     }
     public function updateExpenseView(CreateUpdateExpenseRequest $request, $id)
     {
         $data = $request->all();
-        $this->expenseRepository->update($data,$id);
+        $this->expenseRepository->update($data, $id);
         return $this->showAllExpense();
     }
-
-
-
-
-
-   
-
-
+    public function deleteExpense($id)
+    {
+        $this->expenseRepository->delete($id);
+        return $this->showAllExpense();
+    }
 }
