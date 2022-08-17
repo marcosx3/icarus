@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateUpdateExpenseRequest;
-use App\Jobs\ExpenseForMonths;
 use App\Models\Client;
 use App\Models\TypeExpense;
 use App\Repositories\ExpenseRepository;
-use DateTime;
+
 
 class ExpenseController extends Controller
 {
@@ -17,6 +16,13 @@ class ExpenseController extends Controller
     {
         $this->expenseRepository = $expenseRepository;
     }
+
+    private function showAllExpense()
+    {
+        $this->expenseRepository->all();
+        return redirect()->route('expense.list');
+    }
+
     public function createExpenseView()
     {
         $clients = Client::all();
@@ -26,22 +32,44 @@ class ExpenseController extends Controller
     public function createExpense(CreateUpdateExpenseRequest $request)
     {
         $data = $request->all();
-        if($data['repeat'] == true)
-        {
-            $mes = intval($data['expense_month']->format('m'));
-            while($mes <= 12)
-            {   
-                $aux = new DateTime($data['expense_month']);
-                $data['expense_month'] = $aux->modify('+1month');
-                ExpenseForMonths::dispatch($data);
-                $mes++;
-            }
-        } 
-        else 
-        {
+
+        if ($data['repeat'] == 'true') {
+            $month = date("m", strtotime($data['expense_month']));
+            while ($month <= 12) {
+                $this->expenseRepository->create($data);
+                $data['expense_month'] = date('Y-m-d', strtotime('+1 month', strtotime($data['expense_month'])));
+                $month++;
+            };
+        } else {
             $this->expenseRepository->create($data);
         }
-       
-        dd($data);
+
+        return $this->showAllExpense();
     }
+
+    public function listExpenseView()
+    {
+        $expenses = $this->expenseRepository->all();
+        return view('expense.list',compact('expenses'));
+    }
+
+    public function editExpenseView($id)
+    {   
+        $expense = $this->expenseRepository->edit($id);
+        return view('expense.update',compact('expense'));
+    }
+    public function updateExpenseView(CreateUpdateExpenseRequest $request, $id)
+    {
+        $data = $request->all();
+        $this->expenseRepository->update($data,$id);
+        return $this->showAllExpense();
+    }
+
+
+
+
+
+   
+
+
 }

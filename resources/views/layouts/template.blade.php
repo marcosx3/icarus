@@ -56,6 +56,8 @@
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                       <li><a class="dropdown-item" href="/despesa/cadastro">Cadastrar Despesas</a></li>
                       <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="/despesa/lista">Lista de Despesas</a></li>
+                      <li><hr class="dropdown-divider"></li>
                       <li><a class="dropdown-item" href="/despesa/tipo/cadastro">Cadastrar Tipo de Despesas</a></li>
                       <li><hr class="dropdown-divider"></li>
                       <li><a class="dropdown-item" href="/despesa/tipo/lista">Listar Tipos de Despesas</a></li>

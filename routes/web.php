@@ -31,6 +31,11 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/despesa/tipo/atualizar/{id}',[TypeExpenseController::class, 'updateTypeExpense'])->name('expense.type.update');
     // EXPENSE ROUTES
     Route::get('/despesa/cadastro',[ExpenseController::class,'createExpenseView'])->name('expense.create.view');
+    Route::get('/despesa/lista',[ExpenseController::class, 'listExpenseView'])->name('expense.list');
+
+    Route::get('/despesa/edit/{id}',[ExpenseController::class,'editExpenseView'])->name('expense.edit');
+    Route::post('/despesa/update/{id}',[ExpenseController::class,'updateExpenseView'])->name('expense.update');
+    
     Route::post('/despesa/cadastro',[ExpenseController::class,'createExpense'])->name('expense.create');
 
 });
