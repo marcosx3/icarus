@@ -20,7 +20,7 @@
                 <label for="phone_2" class="form-label">Telefone (Opcional) </label>
                 <input type="tel" class="form-control" name="phone_2" id="phone_2" value="{{$client->phone_1}}">
             </div>
-            <button class="btn btn-dark text-white"type="submit">Cadastrar</button>
+            <button class="btn btn-dark text-white"type="submit">Atualizar</button>
         </form>
     </section>
 @endsection

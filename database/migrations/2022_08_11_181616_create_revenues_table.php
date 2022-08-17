@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('revenues', function (Blueprint $table) {
             $table->id();
-            $table->float('revenue');
-            $table->text('source');
-            $table->date('date');
+            $table->text('revenue_name');
+            $table->decimal('revenue_value');
+            $table->date('revenue_month');
             $table->timestamps();
         });
     }
