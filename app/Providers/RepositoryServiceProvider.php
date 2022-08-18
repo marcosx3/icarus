@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Interfaces\ClientInterface;
 use App\Interfaces\ExpenseInterface;
+use App\Interfaces\TypeRevenueInterface;
 use App\Repositories\ClientRepository;
 use App\Repositories\TypeExpenseRepository;
 use ExpenseRepository;
@@ -26,7 +27,8 @@ class RepositoryServiceProvider extends ServiceProvider
         TypeExpenseRepository::class,
         ExpenseInterface::class,
         ExpenseRepository::class,
-    
+        TypeExpenseRepository::class,
+        TypeRevenueInterface::class
     );
     }
 

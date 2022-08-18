@@ -12,6 +12,11 @@ class Revenue extends Model
 
     public function client()
     {
-        return $this->belongsTo(Client::class);
+        return $this->belongsTo(Client::class,'tb_client_id');
+    }
+
+       public function typeRevenue()
+    {
+        return $this->belongsTo(TypeExpense::class,'tb_type_revenue_id');
     }
 }
