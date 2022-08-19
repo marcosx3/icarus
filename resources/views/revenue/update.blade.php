@@ -1,29 +1,29 @@
 @extends('layouts.template')
-@section('title', 'Cadastrar Despesas')
+@section('title', 'Atualizar Receita')
 
 @section('body')
 
     <div class="container d-flex justify-content-center mt-5">
-        <h1>Cadastrar Despesa</h1>
+        <h1>Atualizar Receita</h1>
     </div>
 
     <div class="container w-50 mt-5">
-        <form action="{{ route('expense.create') }}" method="post">
+        <form action="{{ route('revenue.update',$revenue->id) }}" method="post">
             @csrf
             <div class="mb-3">
-                <label for="name_expense" class="form-label">Nome</label>
-                <input type="text" name="expense_name" class="form-control">
+                <label for="name_revenue" class="form-label">Nome</label>
+                <input type="text" name="revenue_name" class="form-control" value="{{$revenue->revenue_name}}">
             </div>
             <div class="mb-3">
-                <label for="expense_value" class="form-label">Valor</label>
-                <input type="number" name="expense_value" class="form-control" step="0.01">
+                <label for="revenue_value" class="form-label">Valor</label>
+                <input type="number" name="revenue_value" class="form-control" step="0.01" value="{{$revenue->revenue_value}}">
             </div>
 
             <div class="mb-3">
-                <label for="type_expense" class="form-label">Tipo de Despesa </label>
-                <select name="type_expense" class="form-select">
-                    @foreach ($type_expense as $tExpense)
-                        <option value="{{ $tExpense->id }}"> {{ $tExpense->type_expense }} </option>
+                <label for="type_revenue" class="form-label">Tipo de Receita </label>
+                <select name="type_revenue" class="form-select">
+                    @foreach ($type_revenues as $tRevenue)
+                        <option value="{{ $tRevenue->id }}"> {{ $tRevenue->type_revenue }} </option>
                     @endforeach
                 </select>
             </div>
@@ -38,14 +38,14 @@
             </div>
             <div class="mb-3">
                 <label for="date" class="form-label">Periodo </label>
-                <input type="date" name="expense_month" class="form-control">
+                <input type="date" name="revenue_month" class="form-control" value="{{$revenue->revenue_month}}">
             </div>
             <div class="mb-3">
                 <label for="repeat" class="form-label">Repetir nos proximos meses?</label>
                 <input type="text" name="repeat" id="repeat" class="form-control">
             </div>
 
-            <button type="submit" class="btn btn-outline-dark">Cadastrar Despesa</button>
+            <button type="submit" class="btn btn-outline-dark">Atualizar </button>
         </form>
     </div>
 @endsection
