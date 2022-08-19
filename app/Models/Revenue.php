@@ -17,6 +17,6 @@ class Revenue extends Model
 
        public function typeRevenue()
     {
-        return $this->belongsTo(TypeExpense::class,'tb_type_revenue_id');
+        return $this->belongsTo(TypeRevenue::class,'tb_type_revenue_id');
     }
 }

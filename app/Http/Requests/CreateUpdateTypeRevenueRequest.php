@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateUpdateRevenueRequest extends FormRequest
+class CreateUpdateTypeRevenueRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,7 @@ class CreateUpdateRevenueRequest extends FormRequest
     public function rules()
     {
         $rules = [
-            "revenue_name" => 'required | min:1',
-            "revenue_value" => 'required',
-            'revenue_month' =>'date'
+            "type_revenue" => 'required | min:2',
         ];
         return $rules;
     }

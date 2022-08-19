@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateUpdateRevenueRequest;
+use App\Http\Requests\CreateUpdateTypeRevenueRequest;
 use App\Repositories\ClientRepository;
 use App\Repositories\TypeRevenueRepository;
 
@@ -36,7 +37,7 @@ class TypeRevenueController extends Controller
       return view('revenue.type.list', compact('type_revenues'));
    }
 
-   public function createRevenueType(CreateUpdateRevenueRequest $request)
+   public function createRevenueType(CreateUpdateTypeRevenueRequest $request)
    {
       $data = $request->except('_token');
       if ($this->typeRevenueRepository->create($data)) {
@@ -50,7 +51,7 @@ class TypeRevenueController extends Controller
       $te = $this->typeRevenueRepository->edit($id);
       return view('revenue.type.update', compact('te'));
    }
-   public function updateTypeRevenue(CreateUpdateRevenueRequest $request, $id)
+   public function updateTypeRevenue(CreateUpdateTypeRevenueRequest $request, $id)
    {
       $data = $request->except('_token');
       if ($this->typeRevenueRepository->update($data, $id)) {

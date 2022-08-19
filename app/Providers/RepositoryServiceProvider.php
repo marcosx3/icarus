@@ -4,8 +4,10 @@ namespace App\Providers;
 
 use App\Interfaces\ClientInterface;
 use App\Interfaces\ExpenseInterface;
+use App\Interfaces\RevenueInterface;
 use App\Interfaces\TypeRevenueInterface;
 use App\Repositories\ClientRepository;
+use App\Repositories\RevenueRepository;
 use App\Repositories\TypeExpenseRepository;
 use ExpenseRepository;
 use Illuminate\Support\ServiceProvider;
@@ -20,16 +22,18 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function register()
     {
-      $this->app->bind(
-        ClientInterface::class,
-        ClientRepository::class,
-        TypeInterface::class,
-        TypeExpenseRepository::class,
-        ExpenseInterface::class,
-        ExpenseRepository::class,
-        TypeExpenseRepository::class,
-        TypeRevenueInterface::class
-    );
+        $this->app->bind(
+            ClientInterface::class,
+            ClientRepository::class,
+            TypeInterface::class,
+            TypeExpenseRepository::class,
+            ExpenseInterface::class,
+            ExpenseRepository::class,
+            TypeRevenueInterface::class,
+            TypeExpenseRepository::class,
+            RevenueInterface::class,
+            RevenueRepository::class
+        );
     }
 
     /**

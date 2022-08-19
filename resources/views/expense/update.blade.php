@@ -49,7 +49,7 @@
                 </select>
             </div>
 
-            <button type="submit" class="btn btn-outline-dark">Atualizar Despesa</button>
+            <button type="submit" class="btn btn-outline-dark">Atualizar</button>
         </form>
     </div>
 @endsection
