@@ -27,4 +27,17 @@ class Client extends Model
     {
         return $this->hasMany(Revenue::class);
     }
+    public function getClients(string $search = null)
+    {
+        $clients = $this->where( function ($query) use ($search){
+            if($search)
+            {
+                $query->where('email',$search);
+                $query->orWhere('name','LIKE',"%{$search}%");
+
+            }
+        });
+        
+        return $clients;
+    }
 }
