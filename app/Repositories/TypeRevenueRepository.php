@@ -2,10 +2,10 @@
 
 namespace App\Repositories;
 
-use App\Interfaces\TypeRevenueInterface;
+use App\Interfaces\BaseInterface;
 use App\Models\TypeRevenue;
 
-class TypeRevenueRepository implements TypeRevenueInterface
+class TypeRevenueRepository implements BaseInterface
 {
     public function all()
     {

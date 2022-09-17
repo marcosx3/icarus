@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class TypeExpense extends Model
 {
     use HasFactory;
+    protected $table = 'type_expenses';
+
+    protected $primaryKey = 'id';
 
     protected $fillable = [
         'type_expense',
@@ -15,6 +18,6 @@ class TypeExpense extends Model
 
     public function expense()
     {
-        return $this->hasMany(Expense::class,'tb_type_expense_id');
+        return $this->hasMany(Expense::class);
     }
 }

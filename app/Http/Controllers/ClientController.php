@@ -3,21 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateUpdateClienteFormRequest;
-use App\Interfaces\ClientInterface;
 use App\Repositories\ClientRepository;
 
 class ClientController extends Controller
 {
-    private ClientRepository $clientRepository;
+    private ClientRepository $model;
 
-    public function __construct(ClientInterface $clientRepository)
+    public function __construct(ClientRepository $model)
     {
-        $this->clientRepository = $clientRepository;
+        $this->model = $model;
     }
 
     private function listAllClients()
     {
-        $clients = $this->clientRepository->all();
+        $clients = $this->model->all();
         return view('client.list', compact('clients'));
     }
 
@@ -29,7 +28,7 @@ class ClientController extends Controller
     public function createClient(CreateUpdateClienteFormRequest $request)
     {
         $data = $request->except('_token');
-        $this->clientRepository->create($data);
+        $this->model->create($data);
 
         return $this->listAllClients();
     }
@@ -41,7 +40,7 @@ class ClientController extends Controller
 
     public function editClientView($id)
     {
-        $client = $this->clientRepository->edit($id);
+        $client = $this->model->edit($id);
         return view('client.update', compact('client'));
     }
 

@@ -2,12 +2,11 @@
 
 namespace App\Repositories;
 
-
-use App\Interfaces\RevenueInterface;
+use App\Interfaces\BaseInterface;
 use App\Models\Revenue;
 use Illuminate\Support\Facades\DB;
 
-class RevenueRepository implements RevenueInterface
+class RevenueRepository implements BaseInterface
 {
 
     public function all()
@@ -23,7 +22,7 @@ class RevenueRepository implements RevenueInterface
          'revenue_month' => $data['revenue_month'],
          'created_at' => \Carbon\Carbon::now(),
          'updated_at' => \Carbon\Carbon::now(),
-         'tb_client_id' => $data['clients'],
+         'revenue_client_id' => $data['clients'],
          'tb_type_revenue_id' => $data['type_revenue'],
        
         ]);
@@ -42,7 +41,7 @@ class RevenueRepository implements RevenueInterface
          'revenue_month' => $data['revenue_month'],
          'created_at' => \Carbon\Carbon::now(),
          'updated_at' => \Carbon\Carbon::now(),
-         'tb_client_id' => $data['clients'],
+         'revenue_client_id' => $data['clients'],
          'tb_type_revenue_id' => $data['type_revenue'],
        
         ]);

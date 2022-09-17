@@ -8,7 +8,6 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>Cliente</th>
                     <th>Despesa </th>
                     <th>Tipo</th>
                     <th>Valor</th>
@@ -20,9 +19,9 @@
             <tbody>
                 @foreach ($expenses as $exp)
                     <tr>
-                        <td> {{ $exp->client->name }}</td>
+                        
                         <td>{{ $exp->expense_name }} </td>
-                        <td>{{ $exp->typeExpense->type_expense }} </td>
+                        <td>{{ $exp->typeExpense->type_expense}}</td>
                         <td>{{ $exp->expense_value }} </td>
                         <td>{{ $exp->expense_month }} </td>
                         <td>

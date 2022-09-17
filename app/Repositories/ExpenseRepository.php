@@ -2,11 +2,11 @@
 
 namespace App\Repositories;
 
-use App\Interfaces\ExpenseInterface;
+use App\Interfaces\BaseInterface;
 use App\Models\Expense;
 use Illuminate\Support\Facades\DB;
 
-class ExpenseRepository implements ExpenseInterface
+class ExpenseRepository implements BaseInterface
 {
 
     public function all()
@@ -22,7 +22,7 @@ class ExpenseRepository implements ExpenseInterface
          'expense_month' => $data['expense_month'],
          'created_at' => \Carbon\Carbon::now(),
          'updated_at' => \Carbon\Carbon::now(),
-         'tb_client_id' => $data['clients'],
+         'expense_client_id' => $data['clients'],
          'tb_type_expense_id' => $data['type_expense'],
        
         ]);
@@ -41,7 +41,7 @@ class ExpenseRepository implements ExpenseInterface
             'expense_month' => $data['expense_month'],
             'created_at' => \Carbon\Carbon::now(),
             'updated_at' => \Carbon\Carbon::now(),
-            'tb_client_id' => $data['clients'],
+            'expense_client_id' => $data['clients'],
             'tb_type_expense_id' => $data['type_expense'],
           
            ]);

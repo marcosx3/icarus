@@ -2,10 +2,10 @@
 
 namespace App\Repositories;
 
-use App\Interfaces\TypeExpenseInterface;
+use App\Interfaces\BaseInterface;
 use App\Models\TypeExpense;
 
-class TypeExpenseRepository implements TypeExpenseInterface
+class TypeExpenseRepository implements BaseInterface
 {
     public function all()
     {

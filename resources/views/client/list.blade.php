@@ -9,6 +9,7 @@
                     <th>Email </th>
                     <th>Telefone </th>
                     <th>Telefone - 2 </th>
+                    <th>Finanças</th>
                     <th>Atualizar</th>
                     <th>Excluir</th>
                 </tr>
@@ -20,6 +21,9 @@
                         <td>{{ $client->email }} </td>
                         <td>{{ $client->phone_1 }} </td>
                         <td>{{ $client->phone_2 == null ? 'N/A' : $client->phone_2 }}</td>
+                        <td>
+                            <a href="{{ route('client.finance', $client->id) }}" class="btn btn-info ">Finanças</a>
+                        </td>
                         <td>
                             <a href="{{ route('client.edit', $client->id) }}" class="btn btn-warning ">Atualizar</a>
                         </td>

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ExpenseController;
+use App\Http\Controllers\FinanceController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RevenueController;
 use App\Http\Controllers\TypeExpenseController;
@@ -52,4 +53,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/receita/delete/{id}', [RevenueController::class, 'deleteRevenue'])->name('revenue.delete');
     Route::post('/receita/update/{id}', [RevenueController::class, 'updateRevenueView'])->name('revenue.update');
     Route::post('/receita/cadastro', [RevenueController::class, 'createRevenue'])->name('revenue.create');
+
+    //FINANCE
+   Route::get('/cliente/financas/{id}',[FinanceController::class,'viewFinance'])->name('client.finance');
+   
 });

@@ -10,7 +10,7 @@ class Client extends Model
     use HasFactory;
 
     protected $table = 'clients';
-
+    protected $primaryKey = 'id';
     protected $fillable = [
         'name',
         'email',
@@ -20,11 +20,12 @@ class Client extends Model
 
     public function expenses()
     {
-        return $this->hasMany(Expense::class,'tb_client_id');
+        return $this->hasMany(Expense::class,'expense_client_id');
     }
 
     public function revenues()
     {
-        return $this->hasMany(Revenue::class);
+        return $this->hasMany(Revenue::class,'revenue_client_id');
     }
+   
 }

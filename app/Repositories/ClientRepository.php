@@ -2,10 +2,10 @@
 
 namespace App\Repositories;
 
-use App\Interfaces\ClientInterface;
+use App\Interfaces\BaseInterface;
 use App\Models\Client;
 
-class ClientRepository implements ClientInterface
+class ClientRepository implements BaseInterface
 {
     public function all()
     {

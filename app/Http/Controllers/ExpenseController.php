@@ -32,7 +32,7 @@ class ExpenseController extends Controller
     public function createExpense(CreateUpdateExpenseRequest $request)
     {
         $data = $request->all();
-        if ($data['repeat'] != 0 || $data['repeat'] == null) {
+        if ($data['repeat'] != 0 ) {
             $month = $data['repeat'];
             while ($month >= 0) {
                 $this->expenseRepository->create($data);
