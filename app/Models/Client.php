@@ -27,5 +27,4 @@ class Client extends Model
     {
         return $this->hasMany(Revenue::class,'revenue_client_id');
     }
-   
 }

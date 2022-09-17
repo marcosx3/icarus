@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Interfaces\BaseInterface;
 use App\Models\Client;
+use Illuminate\Support\Facades\DB;
 
 class ClientRepository implements BaseInterface
 {
@@ -26,5 +27,13 @@ class ClientRepository implements BaseInterface
     public function delete($id)
     {
         Client::destroy($id);
+    }
+    public function allForApha($id)
+    {
+    //     return DB::table('clients')
+    //    ->select('id', 'username', 'parent')
+    //    ->where('id', '>=', $user_id)
+    //    ->orderBy('CAMPO', 'asc')
+    //    ->get();
     }
 }
