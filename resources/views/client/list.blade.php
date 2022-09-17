@@ -1,6 +1,9 @@
 @extends('layouts.template')
 @section('title', 'Lista de Clientes')
 @section('body')
+<div class="container d-flex justify-content-center mt-5">
+    <h1>Lista de Clientes</h1>
+</div>
     <section class="container-fluid d-flex mt-5">
         <table class="table">
             <thead>

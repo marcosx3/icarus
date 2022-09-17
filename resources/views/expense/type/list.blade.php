@@ -1,6 +1,9 @@
 @extends('layouts.template')
 @section('title', 'Listagem de Tipo de Despesa')
 @section('body')
+<div class="container d-flex justify-content-center mt-5">
+    <h1>Listar Tipos de Despesas</h1>
+</div>
     <section class="container-fluid d-flex mt-5">
         <table class="table">
             <thead>

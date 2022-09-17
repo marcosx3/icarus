@@ -67,21 +67,15 @@
                       <li><a class="dropdown-item" href="/despesa/tipo/lista">Listar Tipos de Despesas</a></li>
                     </ul>
                   </li>
-
-
-
                   <li class="nav-item">
                     <a class="nav-link" href="#">Relatórios</a>
                   </li>
                 </ul>
-                {{-- <form class="d-flex">
-                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                  <button class="btn btn-outline-success" type="submit">Search</button>
-                </form> --}}
               </div>
             </div>
           </nav>
     </header>
     @yield('body')
+  
 </body>
 </html>
