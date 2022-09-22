@@ -56,5 +56,6 @@ Route::middleware(['auth'])->group(function () {
 
     //FINANCE
    Route::get('/cliente/financas/{id}',[FinanceController::class,'viewFinance'])->name('client.finance');
-   
+   Route::post('/cliente/financas/{id}',[FinanceController::class,'viewFinance']);
+//    Route::get('/cliente/financas/{firstDate}/{secondDate}',[FinanceController::class,'searchFilter'])->name('searchPerDate');
 });

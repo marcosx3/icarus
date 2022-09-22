@@ -7,7 +7,7 @@ btnHideFilter.addEventListener('click',function handleClick()
     if(boxFilter.style.display == 'none')
     {
         boxFilter.style.display ='block'
-       
+        btnHideFilter.textContent = 'Filtros';
     } else {
         boxFilter.style.display = 'none';
         btnHideFilter.textContent = 'Mostrar Filtros';

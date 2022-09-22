@@ -2,18 +2,19 @@
 @section('title', 'Finanças')
 @section('body')
     <div class="container mt-5 mb-5">
-         <?php echo '<h1 class="d-flex justify-content-center">' . $client->name . '</h1>' ?>
+        <?php echo '<h1 class="d-flex justify-content-center">' . $client->name . '</h1>'; ?>
     </div>
     <div class="container mb-2 mt-2">
-       <button class="btn btn-warning text-dark" id="btnHideFilter">Filtros</button>
+        <button class="btn btn-warning text-dark" id="btnHideFilter">Filtros</button>
     </div>
-    <div class="container mb-3 " id="searchFilter" >
+    <div class="container mb-3 " id="searchFilter">
         <div>
             <form action="" method="POST">
-                <label for="dataFilter" class="form-label ">Data Inicio: </label>
-                <input type="date" name="dataFilter" id="dataFilter" class="form-control w-25">
-                <label for="dataFilter" class="form-label">Data FIM: </label>
-                <input type="date" name="dataFilter" id="dataFilter" class="form-control w-25">
+                @csrf
+                <label for="firstDate" class="form-label ">Data Inicio: </label>
+                <input type="date" name="firstDate" id="firstDate" class="form-control w-25">
+                <label for="secondDate" class="form-label">Data FIM: </label>
+                <input type="date" name="secondDate" id="secondDate" class="form-control w-25">
 
                 <button class="btn btn-success text-white mt-2" type="submit">Pesquisar</button>
             </form>
@@ -21,11 +22,15 @@
     </div>
     <section>
         <div class="container">
-            <table class="table table-bordered ">
+            <table class="table table-bordered" id="financeTable">
                 <thead>
                     <tr>
                         <th>Despesa</th>
-                        <th>Tipo</th>
+                        @if ($firstDate && $secondDate)
+                            {{-- <th>Tipo</th> --}}
+                        @else
+                            <th>Tipo</th>
+                        @endif
                         <th>Valor</th>
                         <th>Mês</th>
 
@@ -36,7 +41,11 @@
                     @foreach ($exp as $exp)
                         <tr>
                             <td> {{ $exp->expense_name }}</td>
-                            <td> {{ $exp->typeExpense->type_expense }}</td>
+                            @if ($firstDate && $secondDate)
+                                {{-- <td> {{ $exp->typeExpense->type_expense }}</td> --}}
+                            @else
+                                <td> {{ $exp->typeExpense->type_expense }}</td>
+                            @endif
                             <td> {{ $exp->expense_value }}</td>
                             <td> {{ $exp->expense_month }}</td>
                         </tr>
@@ -54,7 +63,11 @@
                 <thead>
                     <tr>
                         <th>Receita</th>
-                        <th>TIpo</th>
+                        @if ($firstDate && $secondDate)
+                            {{-- <th>Tipo</th> --}}
+                        @else
+                            <th>Tipo</th>
+                        @endif
                         <th>Valor</th>
                         <th>Mês</th>
                     </tr>
@@ -64,9 +77,13 @@
                     @foreach ($rev as $rev)
                         <tr>
                             <td> {{ $rev->revenue_name }}</td>
-                            <td> {{ $rev->typeRevenue->type_revenue }}</td>
+                            @if ($firstDate && $secondDate)
+                                {{-- <td> {{ $rev->typeRevenue->type_revenue }}</td> --}}
+                            @else
+                                <td> {{ $rev->typeRevenue->type_revenue }}</td>
+                            @endif
                             <td> {{ $rev->revenue_value }}</td>
-                            <td> {{ $rev->revenue_value }}</td>
+                            <td> {{ $rev->revenue_month }}</td>
                         </tr>
                         <?php $totalRevenues += $rev->revenue_value; ?>
                     @endforeach
@@ -77,5 +94,6 @@
                 </tfoot>
             </table>
         </div>
+        <h1> TOTAL GERAL {{$totalExpenses =  $totalRevenues - $totalExpenses}}</h1>
     </section>
 @endsection

@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-</head>
+  </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
