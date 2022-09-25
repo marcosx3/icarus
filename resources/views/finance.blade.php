@@ -26,11 +26,7 @@
                 <thead>
                     <tr>
                         <th>Despesa</th>
-                        @if ($firstDate && $secondDate)
-                            {{-- <th>Tipo</th> --}}
-                        @else
-                            <th>Tipo</th>
-                        @endif
+                        <th>Tipo</th>
                         <th>Valor</th>
                         <th>Mês</th>
 
@@ -41,11 +37,7 @@
                     @foreach ($exp as $exp)
                         <tr>
                             <td> {{ $exp->expense_name }}</td>
-                            @if ($firstDate && $secondDate)
-                                {{-- <td> {{ $exp->typeExpense->type_expense }}</td> --}}
-                            @else
-                                <td> {{ $exp->typeExpense->type_expense }}</td>
-                            @endif
+                            <td> {{ $exp->expense_type }}</td>
                             <td> {{ $exp->expense_value }}</td>
                             <td> {{ $exp->expense_month }}</td>
                         </tr>
@@ -63,11 +55,7 @@
                 <thead>
                     <tr>
                         <th>Receita</th>
-                        @if ($firstDate && $secondDate)
-                            {{-- <th>Tipo</th> --}}
-                        @else
-                            <th>Tipo</th>
-                        @endif
+                        <th>Tipo</th>
                         <th>Valor</th>
                         <th>Mês</th>
                     </tr>
@@ -77,11 +65,7 @@
                     @foreach ($rev as $rev)
                         <tr>
                             <td> {{ $rev->revenue_name }}</td>
-                            @if ($firstDate && $secondDate)
-                                {{-- <td> {{ $rev->typeRevenue->type_revenue }}</td> --}}
-                            @else
-                                <td> {{ $rev->typeRevenue->type_revenue }}</td>
-                            @endif
+                            <td> {{ $rev->revenue_type }}</td>
                             <td> {{ $rev->revenue_value }}</td>
                             <td> {{ $rev->revenue_month }}</td>
                         </tr>
@@ -94,6 +78,17 @@
                 </tfoot>
             </table>
         </div>
-        <h1> TOTAL GERAL {{$totalExpenses =  $totalRevenues - $totalExpenses}}</h1>
+        <div class="container d-flex justify-content-center">
+            <?php 
+                $totalGeral = $totalRevenues - $totalExpenses
+            ?>
+            @if ($totalGeral >= 0)
+            <h1 style="color: blue"> TOTAL GERAL R$ {{ $totalGeral  }}</h1>
+            @else
+            <h1 style="color: red" step="0.2"> TOTAL GERAL R${{ $totalGeral  }}</h1>
+            @endif
+          
+        </div>
+      
     </section>
 @endsection

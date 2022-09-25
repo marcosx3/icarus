@@ -20,12 +20,8 @@
             </div>
 
             <div class="mb-3">
-                <label for="type_expense" class="form-label">Tipo de Despesa </label>
-                <select name="type_expense" class="form-select">
-                    @foreach ($type_expense as $tExpense)
-                        <option value="{{ $tExpense->id }}"> {{ $tExpense->type_expense }} </option>
-                    @endforeach
-                </select>
+                <label for="expense_type" class="form-label">Tipo de Despesa </label>
+                <input type="text" name="expense_type" class="form-control">
             </div>
 
             <div class="mb-3">

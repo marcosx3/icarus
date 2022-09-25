@@ -23,7 +23,7 @@ class ExpenseRepository implements BaseInterface
          'created_at' => \Carbon\Carbon::now(),
          'updated_at' => \Carbon\Carbon::now(),
          'expense_client_id' => $data['clients'],
-         'tb_type_expense_id' => $data['type_expense'],
+         'expense_type' => $data['expense_type'],
        
         ]);
     }
@@ -42,7 +42,7 @@ class ExpenseRepository implements BaseInterface
             'created_at' => \Carbon\Carbon::now(),
             'updated_at' => \Carbon\Carbon::now(),
             'expense_client_id' => $data['clients'],
-            'tb_type_expense_id' => $data['type_expense'],
+            'expense_type' => $data['expense_type'],
           
            ]);
        

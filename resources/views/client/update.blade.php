@@ -2,7 +2,8 @@
 @section('title', 'Atualizar cliente')
 @section('body')
     <section class="d-flex justify-content-center mt-4 align-content-end">
-        <form action="{{route('client.update',$client->id)}}" method="post" class="form w-75 mt-4" >
+        <form action="{{route('client.update',$client->id)}}" method="POST" class="form w-75 mt-4" >
+            @method('PUT')
             @csrf
             <div class="mb-3">
                 <label for="name" class="form-label">Nome </label>
@@ -18,7 +19,7 @@
             </div>
             <div class="mb-3">
                 <label for="phone_2" class="form-label">Telefone (Opcional) </label>
-                <input type="tel" class="form-control" name="phone_2" id="phone_2" value="{{$client->phone_1}}">
+                <input type="tel" class="form-control" name="phone_2" id="phone_2" value="{{$client->phone_2}}">
             </div>
             <button class="btn btn-dark text-white"type="submit">Atualizar</button>
         </form>

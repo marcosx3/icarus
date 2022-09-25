@@ -46,13 +46,13 @@ class ClientController extends Controller
 
     public function editClient(CreateUpdateClienteFormRequest $request, $id)
     {
-        $data = $request->except('_token');
-        $this->clientRepository->update($data, $id);
+        $data = $request->all();
+        $this->model->update($data, $id);
         return $this->listAllClients();
     }
     public function destroyClient($id)
     {
-        $this->clientRepository->delete($id);
+        $this->model->delete($id);
         $this->listAllClients();
         return $this->listAllClients();
     }

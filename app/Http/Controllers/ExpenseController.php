@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateUpdateExpenseRequest;
 use App\Models\Client;
-use App\Models\TypeExpense;
 use App\Repositories\ExpenseRepository;
 
 
@@ -26,13 +25,12 @@ class ExpenseController extends Controller
     public function createExpenseView()
     {
         $clients = Client::all();
-        $type_expense = TypeExpense::all();
-        return view('expense.create', compact('clients', 'type_expense'));
+        return view('expense.create', compact('clients'));
     }
     public function createExpense(CreateUpdateExpenseRequest $request)
     {
         $data = $request->all();
-        if ($data['repeat'] != 0 ) {
+        if ($data['repeat'] != 0) {
             $month = $data['repeat'];
             while ($month >= 0) {
                 $this->expenseRepository->create($data);
@@ -55,8 +53,7 @@ class ExpenseController extends Controller
     {
         $expense = $this->expenseRepository->edit($id);
         $clients = Client::all();
-        $type_expenses = TypeExpense::all();
-        return view('expense.update', compact('expense', 'clients', 'type_expenses'));
+        return view('expense.update', compact('expense', 'clients'));
     }
     public function updateExpenseView(CreateUpdateExpenseRequest $request, $id)
     {

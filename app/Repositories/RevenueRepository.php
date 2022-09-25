@@ -23,7 +23,7 @@ class RevenueRepository implements BaseInterface
          'created_at' => \Carbon\Carbon::now(),
          'updated_at' => \Carbon\Carbon::now(),
          'revenue_client_id' => $data['clients'],
-         'tb_type_revenue_id' => $data['type_revenue'],
+         'revenue_type' => $data['revenue_type'],
        
         ]);
     }
@@ -42,7 +42,7 @@ class RevenueRepository implements BaseInterface
          'created_at' => \Carbon\Carbon::now(),
          'updated_at' => \Carbon\Carbon::now(),
          'revenue_client_id' => $data['clients'],
-         'tb_type_revenue_id' => $data['type_revenue'],
+         'revenue_type' => $data['revenue_type'],
        
         ]);
        

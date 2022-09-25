@@ -18,10 +18,6 @@ return new class extends Migration
             ->constrained('clients')
             ->onUpdate('CASCADE')
             ->onDelete('CASCADE');
-        $table->foreignId('tb_type_revenue_id')
-            ->constrained('type_revenues')
-            ->onDelete('CASCADE')
-            ->onUpdate('CASCADE');
         });
     }
 

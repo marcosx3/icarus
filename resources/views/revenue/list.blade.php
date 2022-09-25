@@ -21,7 +21,7 @@
                     <tr>
                         
                         <td>{{ $rev->revenue_name }} </td>
-                        <td>{{ $rev->typeRevenue->type_revenue }} </td>
+                        <td>{{ $rev->revenue_type}} </td>
                         <td>{{ $rev->revenue_value }} </td>
                         <td>{{ $rev->revenue_month }} </td>
                         <td>

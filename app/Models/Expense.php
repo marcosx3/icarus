@@ -14,21 +14,16 @@ class Expense extends Model
     
     protected $fillable = [
         'expense_name',
+        'expense_type',
         'expense_value',
         'expense_month',
         'expense_client_id',
-        'tb_type_expense_id',
     ];
    
-
     public function client()
     {
         return $this->belongsTo(Client::class);
         
     }
 
-    public function typeExpense()
-    {
-        return $this->belongsTo(TypeExpense::class,'tb_type_expense_id');
-    }
 }

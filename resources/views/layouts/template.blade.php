@@ -46,10 +46,7 @@
                       <li><a class="dropdown-item" href="/receita/cadastro">Cadastrar Receitas</a></li>
                       <li><hr class="dropdown-divider"></li>
                       <li><a class="dropdown-item" href="/receita/lista">Listar  Receitas</a></li>
-                      <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="/receita/tipo/cadastro">Cadastrar Tipos de Receitas</a></li>
-                      <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="/receita/tipo/lista">Listar Tipos de Receitas</a></li>
+                    
                     </ul>
                   </li>
 
@@ -61,10 +58,6 @@
                       <li><a class="dropdown-item" href="/despesa/cadastro">Cadastrar Despesas</a></li>
                       <li><hr class="dropdown-divider"></li>
                       <li><a class="dropdown-item" href="/despesa/lista">Listar Despesas</a></li>
-                      <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="/despesa/tipo/cadastro">Cadastrar Tipos de Despesas</a></li>
-                      <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="/despesa/tipo/lista">Listar Tipos de Despesas</a></li>
                     </ul>
                   </li>
                   <li class="nav-item">

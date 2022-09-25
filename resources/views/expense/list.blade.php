@@ -21,7 +21,7 @@
                     <tr>
                         
                         <td>{{ $exp->expense_name }} </td>
-                        <td>{{ $exp->typeExpense->type_expense}}</td>
+                        <td>{{ $exp->expense_type}}</td>
                         <td>{{ $exp->expense_value }} </td>
                         <td>{{ $exp->expense_month }} </td>
                         <td>
