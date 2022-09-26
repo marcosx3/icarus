@@ -14,12 +14,6 @@ class ClientController extends Controller
         $this->model = $model;
     }
 
-    private function listAllClients()
-    {
-        $clients = $this->model->all();
-        return view('client.list', compact('clients'));
-    }
-
     public function createClientView()
     {
         return view('client.create');
@@ -28,14 +22,18 @@ class ClientController extends Controller
     public function createClient(CreateUpdateClienteFormRequest $request)
     {
         $data = $request->except('_token');
-        $this->model->create($data);
 
-        return $this->listAllClients();
+        if ($this->model->create($data)) {
+            return redirect()->route('client.list')->with('success', "Cliente cadastro com sucesso!");
+        } else {
+            return redirect()->route('client.list')->with('error', "Não foi possível cadastrar novo cliente");
+        }
     }
 
     public function listClientView()
     {
-        return $this->listAllClients();
+        $clients = $this->model->all();
+        return view('client.list', compact('clients'));
     }
 
     public function editClientView($id)
@@ -47,13 +45,19 @@ class ClientController extends Controller
     public function editClient(CreateUpdateClienteFormRequest $request, $id)
     {
         $data = $request->all();
-        $this->model->update($data, $id);
-        return $this->listAllClients();
+        if ($this->model->update($data, $id)) {
+            return redirect()->route('client.list')->with('info', "Cadastro de cliente atualizado.");
+        } else {
+            return redirect()->route('client.list')->with('error', "Não foi possível atualizar cadastro do cliente.");
+        }
     }
     public function destroyClient($id)
     {
-        $this->model->delete($id);
-        $this->listAllClients();
-        return $this->listAllClients();
+
+        if ($this->model->delete($id)) {
+            return redirect()->route('client.list')->with('info', "Usuário deletado.");
+        } else {
+            return redirect()->route('client.list')->with('error', "Não foi possível deletar cadastro de cliente.");
+        }
     }
 }

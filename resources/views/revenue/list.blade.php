@@ -4,6 +4,9 @@
     <div class="container mt-5 d-flex justify-content-center">
         <h1>Lista de Receitas</h1>
     </div>
+    <div class="container d-flex justify-content-center mt-2 mb-2 ">
+        @include('message.flash-message')
+    </div>
     <section class="container-fluid d-flex mt-5">
         <table class="table">
             <thead>
@@ -19,9 +22,9 @@
             <tbody>
                 @foreach ($revenues as $rev)
                     <tr>
-                        
+
                         <td>{{ $rev->revenue_name }} </td>
-                        <td>{{ $rev->revenue_type}} </td>
+                        <td>{{ $rev->revenue_type }} </td>
                         <td>{{ $rev->revenue_value }} </td>
                         <td>{{ $rev->revenue_month }} </td>
                         <td>

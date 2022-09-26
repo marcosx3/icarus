@@ -25,6 +25,7 @@ class CreateUpdateRevenueRequest extends FormRequest
     {
         $rules = [
             "revenue_name" => 'required | min:1',
+            "revenue_type" => 'required | min:1',
             "revenue_value" => 'required',
             'revenue_month' =>'date'
         ];

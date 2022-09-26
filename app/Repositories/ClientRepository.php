@@ -46,7 +46,7 @@ class ClientRepository implements BaseInterface
     }
     public function delete($id)
     {
-        Client::destroy($id);
+       return  Client::destroy($id);
     }
     public function allForApha($id)
     {

@@ -9,17 +9,25 @@ use App\Repositories\RevenueRepository;
 
 class RevenueController extends Controller
 {
-    protected RevenueRepository $revenueRepository;
-
-    public function __construct(RevenueRepository $revenueRepository)
+    protected RevenueRepository $model;
+    public function __construct(RevenueRepository $model)
     {
-        $this->revenueRepository = $revenueRepository;
+        $this->model = $model;
     }
 
-    private function showAllRevenue()
+    private function createMoreRevenue(array $data)
     {
-        $this->revenueRepository->all();
-        return redirect()->route('revenue.list');
+        if ($data['repeat'] != 0 || $data['repeat'] != null) {
+            $month = $data['repeat'];
+            while ($month >= 0) {
+                $this->model->create($data);
+                $data['revenue_month'] = date('Y-m-d', strtotime('+1 month', strtotime($data['revenue_month'])));
+                --$month;
+            }
+        } else {
+            $this->model->create($data);
+        }
+        return true;
     }
 
     public function createRevenueView()
@@ -30,40 +38,41 @@ class RevenueController extends Controller
     public function createRevenue(CreateUpdateRevenueRequest $request)
     {
         $data = $request->all();
-        if ($data['repeat'] != 0 || $data['repeat'] != null) {
-            $month = $data['repeat'];
-            while ($month >= 0) {
-                $this->revenueRepository->create($data);
-                $data['revenue_month'] = date('Y-m-d', strtotime('+1 month', strtotime($data['revenue_month'])));
-                --$month;
-            }
+        if ($this->createMoreRevenue($data)) {
+            return redirect()->route('revenue.list')->with("success", "Receita cadastrada com sucesso!");
         } else {
-            $this->revenueRepository->create($data);
+            return redirect()->route('revenue.list')->with("error", "Não foi possível cadastrar uma nova receita.");
         }
-        return $this->showAllRevenue();
     }
 
     public function listRevenueView()
     {
-        $revenues = $this->revenueRepository->all();
+        $revenues = $this->model->all();
         return view('revenue.list', compact('revenues'));
     }
 
     public function editRevenueView($id)
     {
-        $revenue = $this->revenueRepository->edit($id);
+        $revenue = $this->model->edit($id);
         $clients = Client::all();
         return view('revenue.update', compact('revenue', 'clients'));
     }
     public function updateRevenueView(CreateUpdateRevenueRequest $request, $id)
     {
         $data = $request->all();
-        $this->revenueRepository->update($data, $id);
-        return $this->showAllRevenue();
+        if ($this->model->update($data, $id)) {
+            return redirect()->route('revenue.list')->with("info", "Receita atualizada.");
+        } else {
+            return redirect()->route('revenue.list')->with("error", "Não foi possível atualizar receita.");
+        }
     }
     public function deleteRevenue($id)
     {
-        $this->revenueRepository->delete($id);
-        return $this->showAllRevenue();
+
+        if ($this->revenueRepository->delete($id)) {
+            return redirect()->route('revenue.list')->with('info', "Receita excluída.");
+        } else {
+            return redirect()->route('revenue.list')->with('error', "Despesa não excluída.");
+        }
     }
 }
