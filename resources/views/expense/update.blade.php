@@ -39,10 +39,7 @@
             </div>
             <div class="mb-3">
                 <label for="repeat" class="form-label">Repetir nos proximos meses?</label>
-                <select name="repeat" id="repeat" class="form-select">
-                    <option value="true">SIM</option>
-                    <option value="false">NÃO</option>
-                </select>
+                <input type="text" name="repeat" id="repeat" class="form-control" required placeholder="0">
             </div>
 
             <button type="submit" class="btn btn-outline-dark">Atualizar</button>

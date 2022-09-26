@@ -49,6 +49,6 @@ class ExpenseRepository implements BaseInterface
     }
     public function delete($id)
     {
-        Expense::destroy($id);
+      return Expense::destroy($id);
     }
 }

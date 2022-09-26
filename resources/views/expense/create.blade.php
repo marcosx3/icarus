@@ -6,7 +6,9 @@
     <div class="container d-flex justify-content-center mt-5">
         <h1>Cadastrar Despesa</h1>
     </div>
-
+    <div class="container d-flex justify-content-center mt-2 mb-2 ">
+        @include('message.flash-message')
+    </div>
     <div class="container w-50 mt-5">
         <form action="{{ route('expense.create') }}" method="post">
             @csrf

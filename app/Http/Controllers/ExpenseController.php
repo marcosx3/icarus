@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Http\Requests\CreateUpdateExpenseRequest;
 use App\Models\Client;
 use App\Repositories\ExpenseRepository;
@@ -9,17 +10,11 @@ use App\Repositories\ExpenseRepository;
 
 class ExpenseController extends Controller
 {
-    protected ExpenseRepository $expenseRepository;
+    protected ExpenseRepository $model;
 
-    public function __construct(ExpenseRepository $expenseRepository)
+    public function __construct(ExpenseRepository $model)
     {
-        $this->expenseRepository = $expenseRepository;
-    }
-
-    private function showAllExpense()
-    {
-        $this->expenseRepository->all();
-        return redirect()->route('expense.list');
+        $this->model = $model;
     }
 
     public function createExpenseView()
@@ -27,43 +22,62 @@ class ExpenseController extends Controller
         $clients = Client::all();
         return view('expense.create', compact('clients'));
     }
-    public function createExpense(CreateUpdateExpenseRequest $request)
+
+    private function createMoreExpense(array $data)
     {
-        $data = $request->all();
-        if ($data['repeat'] != 0) {
+       
+       if ($data['repeat'] != 0) {
             $month = $data['repeat'];
             while ($month >= 0) {
-                $this->expenseRepository->create($data);
+                $this->model->create($data);
                 $data['expense_month'] = date('Y-m-d', strtotime('+1 month', strtotime($data['expense_month'])));
                 $month--;
             }
         } else {
-            $this->expenseRepository->create($data);
+            $this->model->create($data);
         }
-        return $this->showAllExpense();
+        return true;
+    }
+    public function createExpense(CreateUpdateExpenseRequest $request)
+    {
+        $data = $request->all();
+        if($this->createMoreExpense($data))
+        {
+            return redirect()->route('expense.list')->with("success","Despesa cadastrada com sucesso!");
+        }
+        else 
+        {
+            return redirect()->route('expense.list')->with("error","Não foi possível cadastrar uma nova despesa.");
+        }
     }
 
     public function listExpenseView()
     {
-        $expenses = $this->expenseRepository->all();
+        $expenses = $this->model->all();
         return view('expense.list', compact('expenses'));
     }
 
     public function editExpenseView($id)
     {
-        $expense = $this->expenseRepository->edit($id);
+        $expense = $this->model->edit($id);
         $clients = Client::all();
         return view('expense.update', compact('expense', 'clients'));
     }
     public function updateExpenseView(CreateUpdateExpenseRequest $request, $id)
     {
         $data = $request->all();
-        $this->expenseRepository->update($data, $id);
-        return $this->showAllExpense();
+        if ($this->model->update($data, $id)) {
+            return redirect()->route('expense.list')->with('success', "Despesa atualizada com sucesso!");
+        } else {
+            return redirect()->route('expense.list')->with('error', "Não foi possível atualizar despesa.");
+        }
     }
     public function deleteExpense($id)
     {
-        $this->expenseRepository->delete($id);
-        return $this->showAllExpense();
+        if ($this->model->delete($id)) {
+            return redirect()->route('expense.list')->with('info', "Despesa excluída.");
+        } else {
+            return redirect()->route('expense.list')->with('error', "Despesa não excluída.");
+        }
     }
 }

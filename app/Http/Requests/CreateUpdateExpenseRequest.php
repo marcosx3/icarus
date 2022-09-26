@@ -25,6 +25,7 @@ class CreateUpdateExpenseRequest extends FormRequest
     {
         $rules = [
             "expense_name" => 'required | min:2',
+            "expense_type" => 'required | min:2',
             "expense_value" => 'required',
             'expense_month' =>'date'
         ];

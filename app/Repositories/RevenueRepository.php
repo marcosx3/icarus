@@ -49,6 +49,6 @@ class RevenueRepository implements BaseInterface
     }
     public function delete($id)
     {
-        Revenue::destroy($id);
+       return  Revenue::destroy($id);
     }
 }
