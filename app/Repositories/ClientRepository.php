@@ -48,4 +48,12 @@ class ClientRepository implements BaseInterface
     {
         Client::destroy($id);
     }
+    public function allForApha($id)
+    {
+    //     return DB::table('clients')
+    //    ->select('id', 'username', 'parent')
+    //    ->where('id', '>=', $user_id)
+    //    ->orderBy('CAMPO', 'asc')
+    //    ->get();
+    }
 }

@@ -17,7 +17,7 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::get('/home', [HomeController::class, 'index'])->name('home.clients');
     // CLIENT ROUTES
     Route::get('/clientes/cadastro', [ClientController::class, 'createClientView']);
     Route::get('/clientes/lista', [ClientController::class, 'listClientView'])->name('client.list');
