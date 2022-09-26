@@ -8,7 +8,6 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>Cliente</th>
                     <th>Receita </th>
                     <th>Tipo</th>
                     <th>Valor</th>
@@ -20,9 +19,9 @@
             <tbody>
                 @foreach ($revenues as $rev)
                     <tr>
-                        <td> {{ $rev->client->name }}</td>
+                        
                         <td>{{ $rev->revenue_name }} </td>
-                        <td>{{ $rev->typeRevenue->type_revenue }} </td>
+                        <td>{{ $rev->revenue_type}} </td>
                         <td>{{ $rev->revenue_value }} </td>
                         <td>{{ $rev->revenue_month }} </td>
                         <td>

@@ -2,7 +2,7 @@
 
 namespace App\Interfaces;
 
-interface TypeExpenseInterface
+interface BaseInterface 
 {
     public function all();
     public function create(array $data);

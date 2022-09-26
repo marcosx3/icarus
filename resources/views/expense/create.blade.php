@@ -20,12 +20,8 @@
             </div>
 
             <div class="mb-3">
-                <label for="type_expense" class="form-label">Tipo de Despesa </label>
-                <select name="type_expense" class="form-select">
-                    @foreach ($type_expense as $tExpense)
-                        <option value="{{ $tExpense->id }}"> {{ $tExpense->type_expense }} </option>
-                    @endforeach
-                </select>
+                <label for="expense_type" class="form-label">Tipo de Despesa </label>
+                <input type="text" name="expense_type" class="form-control">
             </div>
 
             <div class="mb-3">
@@ -42,7 +38,7 @@
             </div>
             <div class="mb-3">
                 <label for="repeat" class="form-label">Repetir nos proximos meses?</label>
-                <input type="text" name="repeat" id="repeat" class="form-control">
+                <input type="text" name="repeat" id="repeat" class="form-control" required placeholder="0">
             </div>
 
             <button type="submit" class="btn btn-outline-dark">Cadastrar Despesa</button>

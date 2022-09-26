@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('revenues', function (Blueprint $table) {
             $table->id();
             $table->text('revenue_name');
+            $table->text('revenue_type');
             $table->decimal('revenue_value');
             $table->date('revenue_month');
             $table->timestamps();

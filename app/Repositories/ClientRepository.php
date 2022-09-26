@@ -2,11 +2,11 @@
 
 namespace App\Repositories;
 
-use App\Interfaces\ClientInterface;
+use App\Interfaces\BaseInterface;
 use App\Models\Client;
 use Illuminate\Support\Facades\DB;
 
-class ClientRepository implements ClientInterface
+class ClientRepository implements BaseInterface
 {
     public function all()
     {
@@ -14,7 +14,16 @@ class ClientRepository implements ClientInterface
     }
     public function create(array $data)
     {
-        return Client::create($data);
+        
+        return DB::table('clients')
+        ->insert([
+            "name" => $data['name'],
+            "email" => $data['email'],
+            "phone_1" => $data['phone_1'],
+            "phone_2" => $data['phone_2'],
+            'created_at' => \Carbon\Carbon::now(),
+            'updated_at' => \Carbon\Carbon::now()
+        ]);
     }
     public function edit($id)
     {
@@ -22,7 +31,18 @@ class ClientRepository implements ClientInterface
     }
     public function update(array $data, $id)
     {
-        return Client::where('id', $id)->update($data);
+        // return Client::where('id', $id)->update($data);
+          
+        return DB::table('clients')
+        ->where("id","=",$id)
+        ->update([
+            "name" => $data['name'],
+            "email" => $data['email'],
+            "phone_1" => $data['phone_1'],
+            "phone_2" => $data['phone_2'],
+            'created_at' => \Carbon\Carbon::now(),
+            'updated_at' => \Carbon\Carbon::now()
+        ]);
     }
     public function delete($id)
     {

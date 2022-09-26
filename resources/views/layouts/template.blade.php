@@ -12,10 +12,12 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-</head>
+    <link href="{{ "/css/app.css" }}" rel="stylesheet">
+  </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        {{-- <nav class="navbar navbar-expand-lg navbar-light bg-dark"> --}}
+          <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
               <a class="navbar-brand" href="/home">Icarus</a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,10 +48,7 @@
                       <li><a class="dropdown-item" href="/receita/cadastro">Cadastrar Receitas</a></li>
                       <li><hr class="dropdown-divider"></li>
                       <li><a class="dropdown-item" href="/receita/lista">Listar  Receitas</a></li>
-                      <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="/receita/tipo/cadastro">Cadastrar Tipos de Receitas</a></li>
-                      <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="/receita/tipo/lista">Listar Tipos de Receitas</a></li>
+                    
                     </ul>
                   </li>
 
@@ -61,27 +60,17 @@
                       <li><a class="dropdown-item" href="/despesa/cadastro">Cadastrar Despesas</a></li>
                       <li><hr class="dropdown-divider"></li>
                       <li><a class="dropdown-item" href="/despesa/lista">Listar Despesas</a></li>
-                      <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="/despesa/tipo/cadastro">Cadastrar Tipos de Despesas</a></li>
-                      <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="/despesa/tipo/lista">Listar Tipos de Despesas</a></li>
                     </ul>
                   </li>
-
-
-
                   <li class="nav-item">
                     <a class="nav-link" href="#">Relatórios</a>
                   </li>
                 </ul>
-                {{-- <form class="d-flex">
-                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                  <button class="btn btn-outline-success" type="submit">Search</button>
-                </form> --}}
               </div>
             </div>
           </nav>
     </header>
     @yield('body')
+  
 </body>
 </html>

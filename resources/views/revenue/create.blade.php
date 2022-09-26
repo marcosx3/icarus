@@ -20,12 +20,8 @@
             </div>
 
             <div class="mb-3">
-                <label for="type_revenue" class="form-label">Tipo de Receita </label>
-                <select name="type_revenue" class="form-select">
-                    @foreach ($type_revenue as $tRevenue)
-                        <option value="{{ $tRevenue->id }}"> {{ $tRevenue->type_revenue }} </option>
-                    @endforeach
-                </select>
+                <label for="revenue_type" class="form-label">Tipo de Receita </label>
+                <input type="text" name="revenue_type" class="form-control">
             </div>
 
             <div class="mb-3">
@@ -42,7 +38,7 @@
             </div>
             <div class="mb-3">
                 <label for="repeat" class="form-label">Repetir nos proximos meses?</label>
-                <input type="text" name="repeat" id="repeat" class="form-control">
+                <input type="text" name="repeat" id="repeat" class="form-control" required placeholder="0">
             </div>
 
             <button type="submit" class="btn btn-outline-dark">Cadastrar Receita</button>

@@ -20,12 +20,8 @@
             </div>
 
             <div class="mb-3">
-                <label for="type_revenue" class="form-label">Tipo de Receita </label>
-                <select name="type_revenue" class="form-select">
-                    @foreach ($type_revenues as $tRevenue)
-                        <option value="{{ $tRevenue->id }}"> {{ $tRevenue->type_revenue }} </option>
-                    @endforeach
-                </select>
+                <label for="revenue_type" class="form-label" value>Tipo de Receita </label>
+                <input type="text" name="revenue_type" class="form-control" value="{{ $revenue->revenue_type}}">
             </div>
 
             <div class="mb-3">

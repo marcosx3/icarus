@@ -14,14 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::table('revenues', function (Blueprint $table) {
-            $table->foreignId('tb_client_id')
+            $table->foreignId('revenue_client_id')
             ->constrained('clients')
             ->onUpdate('CASCADE')
             ->onDelete('CASCADE');
-        $table->foreignId('tb_type_revenue_id')
-            ->constrained('type_revenues')
-            ->onDelete('CASCADE')
-            ->onUpdate('CASCADE');
         });
     }
 
@@ -33,7 +29,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('revenues', function (Blueprint $table) {
-            //
+            
         });
     }
 };

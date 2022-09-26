@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateUpdateRevenueRequest;
 use App\Models\Client;
-use App\Models\TypeRevenue;
 use App\Repositories\RevenueRepository;
 
 
@@ -26,8 +25,7 @@ class RevenueController extends Controller
     public function createRevenueView()
     {
         $clients = Client::all();
-        $type_revenue = TypeRevenue::all();
-        return view('revenue.create', compact('clients', 'type_revenue'));
+        return view('revenue.create', compact('clients'));
     }
     public function createRevenue(CreateUpdateRevenueRequest $request)
     {
@@ -55,8 +53,7 @@ class RevenueController extends Controller
     {
         $revenue = $this->revenueRepository->edit($id);
         $clients = Client::all();
-        $type_revenues = TypeRevenue::all();
-        return view('revenue.update', compact('revenue', 'clients', 'type_revenues'));
+        return view('revenue.update', compact('revenue', 'clients'));
     }
     public function updateRevenueView(CreateUpdateRevenueRequest $request, $id)
     {
