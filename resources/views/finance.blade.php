@@ -29,7 +29,6 @@
                         <th>Tipo</th>
                         <th>Valor</th>
                         <th>Mês</th>
-
                     </tr>
                 </thead>
                 <tbody>
