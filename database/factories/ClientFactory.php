@@ -16,11 +16,12 @@ class ClientFactory extends Factory
      */
     public function definition()
     {
+        $faker = \Faker\Factory::create('pt_BR');
         return [
-            'name' => $this->faker->name(),
-            'email' =>$this->faker->email(),
-            'phone_1' => $this->faker->phoneNumber(),
-            'phone_2' => $this->faker->phoneNumber(),
+            'name' => $faker->name(),
+            'email' => $faker->email(),
+            'phone_1' => $faker->phoneNumber(),
+            'phone_2' => $faker->phoneNumber(),
         ];
     }
 }
