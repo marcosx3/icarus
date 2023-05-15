@@ -17,6 +17,7 @@ class UserFactory extends Factory
      */
     public function definition()
     {
+        $faker = \Faker\Factory::create('pt_BR');
         return [
             'name' => fake()->name(),
             'email' => fake()->safeEmail(),
